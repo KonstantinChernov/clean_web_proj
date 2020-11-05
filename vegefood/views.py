@@ -41,7 +41,54 @@ class ShopView(View):
 class AboutView(View):
 
     def get(self, request):
-
         context = INFO
-
         return render(request, 'vegefood/about.html', context)
+
+
+class BlogView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/blog.html', context)
+
+
+class BlogPostView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/blog-single.html', context)
+
+
+class ContactView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/contact.html', context)
+
+
+class WishlistView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/wishlist.html', context)
+
+
+class ProductView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/product-single.html', context)
+
+
+class CartView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/cart.html', context)
+
+
+class CheckoutView(View):
+
+    def get(self, request):
+        context = INFO
+        return render(request, 'vegefood/checkout.html', context)

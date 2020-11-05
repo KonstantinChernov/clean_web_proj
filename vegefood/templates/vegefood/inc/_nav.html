@@ -15,16 +15,16 @@
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'shop' %}</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
               	<a class="dropdown-item" href="{% url 'shop' %}">{% trans 'shop' %}</a>
-              	<a class="dropdown-item" href="{% static 'vegefood/wishlist.html' %}">Wishlist</a>
-                <a class="dropdown-item" href="{% static 'vegefood/product-single.html' %}">Single Product</a>
-                <a class="dropdown-item" href="{% static 'vegefood/cart.html' %}">Cart</a>
-                <a class="dropdown-item" href="{% static 'vegefood/checkout.html' %}">Checkout</a>
+              	<a class="dropdown-item" href="{% url 'wishlist' %}">Wishlist</a>
+                <a class="dropdown-item" href="{% url 'product' %}">Single Product</a>
+                <a class="dropdown-item" href="{% url 'cart' %}">Cart</a>
+                <a class="dropdown-item" href="{% url 'checkout' %}">Checkout</a>
               </div>
             </li>
 	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="{% static 'vegefood/blog.html' %}" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="{% static 'vegefood/contact.html' %}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{% static 'vegefood/cart.html' %}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="{% url 'contact' %}"class="nav-link">Contact</a></li>
+	          <li class="nav-item cta cta-colored"><a href="{% url 'cart' %}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
 	        </ul>
 	      </div>
