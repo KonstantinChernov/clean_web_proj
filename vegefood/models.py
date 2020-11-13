@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-
+from django.contrib.auth.models import User as UserAuth
 # Create your models here.
 
 
@@ -16,6 +16,8 @@ class User(models.Model):
 
     phone_number = models.CharField(max_length=12, null=True, blank=True)
     sex = models.CharField(max_length=1, choices=SEX, null=True, blank=True)
+
+    auth_user = models.OneToOneField(UserAuth, null=True, on_delete=models.SET_NULL)
 
     city = models.CharField(max_length=20, editable=False)
     age = models.IntegerField(default=18)

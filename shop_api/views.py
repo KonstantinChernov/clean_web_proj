@@ -14,7 +14,7 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
 
 
-class ProductViewSet(ReadOnlyModelViewSet):
+class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 

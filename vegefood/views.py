@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .models import Product, Type, Cart
 from .settings.base import INFO
@@ -89,12 +91,14 @@ class ProductView(View):
         return render(request, 'vegefood/product-single.html', context)
 
 
-class CartView(View):
+class CartView(LoginRequiredMixin, View):
 
     def get(self, request, user_id=1):
         user_id = self.request.GET.get('user_id')
 
-        cart_list = Cart.objects.filter(user_id=user_id)
+        cart_list = Cart.objects.filter(user_id__auth_user__username=request.user)
+
+        # cart_list = Cart.objects.filter(user_id=user_id)
         products_list = Product.objects.all()
 
         context = {
