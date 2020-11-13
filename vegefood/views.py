@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from .models import Product, Type
+from .models import Product, Type, Cart
 from .settings.base import INFO
 
 # Create your views here.
@@ -91,8 +91,15 @@ class ProductView(View):
 
 class CartView(View):
 
-    def get(self, request):
-        context = INFO
+    def get(self, request, user_id=1):
+        user_id = self.request.GET.get('user_id')
+
+        cart_list = Cart.objects.filter(user_id=user_id)
+        products_list = Product.objects.all()
+
+        context = {
+            'cart_list': cart_list,
+        }
         return render(request, 'vegefood/cart.html', context)
 
 
