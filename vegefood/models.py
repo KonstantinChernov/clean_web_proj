@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 # Create your models here.
@@ -9,8 +10,7 @@ class User(models.Model):
         ('0', 'Женщина')
 
     )
-    # id = models.AutoField()  # integer
-    email = models.EmailField(primary_key=True)
+    email = models.EmailField()
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
@@ -25,14 +25,6 @@ class User(models.Model):
 
 
 class Product(models.Model):
-    PRODUCT_TYPE = (
-        ('1', 'fruit'),
-        ('2', 'veg'),
-        ('3', 'juice'),
-        ('4', 'dried'),
-        (None, 'Unknown')
-    )
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20, unique=True)
     image = models.ImageField()
     price = models.FloatField()
@@ -52,13 +44,29 @@ class Type(models.Model):
 
 
 class Cart(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey('User', on_delete=models.CASCADE, null=True)
     product = models.ForeignKey('Product', on_delete=models.PROTECT)
+    count = models.IntegerField()
 
     create_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user} - {self.product}"
+        return f"{self.user_id} - {self.product}"
 
     class Meta:
-        unique_together = (('user', 'product'), )
+        unique_together = (('user_id', 'product'), )
+
+
+class Coupon(models.Model):
+    name = models.CharField(max_length=25, primary_key=True)
+    value = models.IntegerField()
+    min_coast = models.IntegerField()
+    start_at = models.DateTimeField()
+    finish_at = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.name}"
+
+    def check_date(self):
+        if self.start_at > self.finish_at:
+            raise ValidationError({'finish_at': ["Start date must be less finish date"]})

@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'common',
     'login',
-    'vegefood'
+    'vegefood',
+    'rest_framework',
+    'shop_api'
 ]
 
 MIDDLEWARE = [
