@@ -1,0 +1,16 @@
+{% extends 'registration/login.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="wrap-login100 p-t-50 p-b-90">
+		<span class="login100-form-title p-b-51">
+			Logged Out!
+		</span>
+		<a href="{% url 'login'%}" class="txt1">
+			Log in again
+		</a>
+	</div>
+</div>
+{% endblock %}

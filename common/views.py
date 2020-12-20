@@ -22,4 +22,4 @@ class RandomNumberView(View):
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'common/index.html')
+        return render(request, 'common/login.html')
