@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common',
     'login',
-    'vegefood',
+    'shop',
+    'blog',
     'crispy_forms'
 ]
 
